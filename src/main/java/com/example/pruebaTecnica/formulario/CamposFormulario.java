@@ -1,14 +1,22 @@
 package com.example.pruebaTecnica.formulario;
 
+import jakarta.persistence.*;
+
+
 import java.time.LocalDate;
+
+@Entity
+@Table(name = "formulariogco")
 
 public class CamposFormulario {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String identificacion;
     private Integer numeroIdentificacion;
-    private  String nombres;
-    private  String apellidos;
+    private String nombres;
+    private String apellidos;
     private LocalDate fechaNacimiento;
     private String direccion;
     private String ciudad;
@@ -19,7 +27,8 @@ public class CamposFormulario {
     public CamposFormulario() {
     }
 
-    public CamposFormulario(String identificacion, Integer numeroIdentificacion, String nombres, String apellidos, LocalDate fechaNacimiento, String direccion, String ciudad, String departamento, String pais, String marcaAfiliacion) {
+    public CamposFormulario(Integer id, String identificacion, Integer numeroIdentificacion, String nombres, String apellidos, LocalDate fechaNacimiento, String direccion, String ciudad, String departamento, String pais, String marcaAfiliacion) {
+        this.id = id;
         this.identificacion = identificacion;
         this.numeroIdentificacion = numeroIdentificacion;
         this.nombres = nombres;
@@ -30,6 +39,14 @@ public class CamposFormulario {
         this.departamento = departamento;
         this.pais = pais;
         this.marcaAfiliacion = marcaAfiliacion;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getIdentificacion() {
